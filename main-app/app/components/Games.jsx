@@ -8,12 +8,36 @@ import { useInView } from "react-intersection-observer";
 // 1. ADDED THE 'url' FIELD TO EACH GAME OBJECT
 const games = [
   {
+    image: "/tower-battle.png",
+    title: "Tower Battle",
+    category: "Reaction game",
+    description:
+      "A fast viewer-controlled tower battle that gets your audience choosing sides, reacting, and fighting to reach 500 points first.",
+    url: "https://tiktok-live-games.itch.io/tower-battle-tiktok-live-interactive-game-customizable", 
+  },
+  {
+    image: "/flag-rush.png",
+    title: "Flag Rush",
+    category: "TikTok LIVE Racing",
+    description:
+      "A fast viewer-controlled race where gifts power your runners, viewers choose their countries, and every LIVE can become a photo finish.",
+    url: "https://tiktok-live-games.itch.io/racing-tiktok-live-game", 
+  },
+  {
+    image: "/disco.png",
+    title: "Disco",
+    category: "TikTok LIVE Dancing",
+    description:
+      "A neon TikTok LIVE nightclub where viewers become dancers, gifts unlock VIP moments, and every stream turns into an interactive party.",
+    url: "https://tiktok-live-games.itch.io/disco-tiktok-live-game", 
+  },
+  {
     image: "/SquidGame.png",
     title: "Red Green Light",
     category: "Reaction game",
     description:
       "A fast viewer-controlled challenge that keeps people watching, reacting, and waiting for the next round.",
-    url: "https://iliaskot.itch.io/tiktok-live-games", 
+    url: "https://tiktok-live-games.itch.io/tiktok-live-games", 
   },
   {
     image: "/score_goal.png",
@@ -21,7 +45,7 @@ const games = [
     category: "Team Battle",
     description:
       "Turn Your TikTok LIVE Into an Interactive FIFA World Cup Experience ⚽",
-    url: "https://iliaskot.itch.io/worldcup-tiktok-live-game",
+    url: "https://tiktok-live-games.itch.io/worldcup-tiktok-live-game",
   },
   {
     image: "/tiktok_live_games_bundle.png",
@@ -30,7 +54,7 @@ const games = [
     imageMode: "contain",
     description:
       "Get access to all 5 TikTok LIVE games in one bundle and let your audience interact through likes, comments, and gifts.",
-    url: "https://iliaskot.itch.io/tiktoklivegames",
+    url: "https://tiktok-live-games.itch.io/tiktok-live-interactive-games",
   },
     {
     image: "/Ping Pong.png",
@@ -39,7 +63,7 @@ const games = [
     imageMode: "contain",
     description:
       "Red versus Blue chaos where viewers join teams and fight live through TikTok interactions.",
-    url: "https://iliaskot.itch.io/new-tiktok-live-game",
+    url: "https://tiktok-live-games.itch.io/new-tiktok-live-game",
   },
   {
     image: "/driverush.png",
@@ -47,7 +71,7 @@ const games = [
     category: "Car Racing",
     description:
       "DriveRush turns your TikTok LIVE into an interactive racing game where viewers control the action.",
-    url: "https://iliaskot.itch.io/tiktok-live-game-driverush",
+    url: "https://tiktok-live-games.itch.io/tiktok-live-game-driverush",
   },
   {
     image: "/football_modern.png",
@@ -63,7 +87,7 @@ const games = [
     category: "Gift Race",
     description:
       "Viewers move the spacecrafts by sending gifts, but you can also control them manually.",
-    url: "https://iliaskot.itch.io/tiktok-live-interactive-game-spacecrafts-race",
+    url: "https://tiktok-live-games.itch.io/tiktok-live-interactive-game-spacecrafts-race",
   },
   {
     title: "Mystery Game",
