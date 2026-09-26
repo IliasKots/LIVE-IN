@@ -4,8 +4,10 @@ import Link from "next/link";
 
 import { createClient } from "@/lib/supabase/server";
 import styles from "./account.module.css";
+import PointsPanel from './PointsPanel';
+import { pointsEnabled } from '@/lib/points';
 
-export default async function AccountPage() {
+export default async function AccountPage({ searchParams }) {
   const supabase = await createClient();
 
   const {
@@ -42,6 +44,7 @@ export default async function AccountPage() {
   });
 
   const emailVerified = Boolean(user.email_confirmed_at);
+  const query = await searchParams;
 
   return (
     <main className={styles.page}>
@@ -85,6 +88,8 @@ export default async function AccountPage() {
             </div>
           </div>
         </section>
+
+        {pointsEnabled() && <PointsPanel supabase={supabase} userId={user.id} cursor={query?.pointsCursor ?? null} />}
 
         <div className={styles.grid}>
           <section className={styles.card}>

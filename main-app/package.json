@@ -8,7 +8,10 @@
     "postbuild": "next-sitemap",
     "postinstall": "prisma generate",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:points": "eslint lib/points*.{js,mjs} lib/launcher-auth*.{js,mjs} app/api/v1/me/points app/launcher/account/PointsPanel.jsx app/launcher/account/page.jsx tests scripts/points-admin.mjs scripts/smoke-points.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:smoke": "node scripts/smoke-points.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -26,10 +29,13 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-icons": "^5.7.0",
-    "react-intersection-observer": "^9.16.0"
+    "react-intersection-observer": "^9.16.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.4.3",
     "@eslint/eslintrc": "^3",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "^16.1.6"
   }

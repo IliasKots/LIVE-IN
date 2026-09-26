@@ -1,0 +1,27 @@
+.panel { margin: 0 0 1.2rem; padding: 1.5rem; border: 1px solid #dce8f1; border-radius: 18px; background: #fff; color: #1f2937; box-shadow: 0 14px 40px #0f172a0f; }
+.heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.heading h2 { margin: .4rem 0 0; font-size: 1.2rem; }
+.eyebrow { color: #1b75bc; font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
+.balance { display: flex; align-items: baseline; flex-wrap: wrap; gap: .7rem; margin: 1.5rem 0; }
+.balance strong { font-size: clamp(1.6rem, 5vw, 3rem); line-height: 1.2; overflow-wrap: anywhere; min-width: 0; }
+.balance span, .note { color: #64748b; font-size: .85rem; line-height: 1.6; }
+.totals { display: flex; flex-wrap: wrap; gap: 1rem 3rem; margin: 0; }
+.totals dt { color: #64748b; font-size: .8rem; }
+.totals dd { font-size: 1.1rem; font-weight: 700; margin: .3rem 0 0; overflow-wrap: anywhere; }
+.button { display: inline-flex; padding: .7rem 1rem; border: 1px solid #cbd5e1; border-radius: 9px; background: #f8fafc; color: #334155; font: inherit; font-size: .8rem; font-weight: 700; text-decoration: none; min-height: 44px; align-items: center; box-sizing: border-box; }
+.button:disabled { color: #64748b; cursor: not-allowed; background: #f1f5f9; }
+.button:focus-visible, .navigation a:focus-visible { outline: 3px solid #1b75bc; outline-offset: 3px; }
+.activityHeading { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; flex-wrap: wrap; margin-top: 1.5rem; }
+.activityHeading h3 { font-size: 1rem; margin: 0; }
+.activityHeading span { color: #64748b; font-size: .75rem; }
+.activity { list-style: none; padding: 0; margin: .75rem 0; }
+.activity li { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #eef2f6; }
+.activity li div { min-width: 0; }
+.activity strong { display: block; font-size: .85rem; overflow-wrap: anywhere; }
+.activity time { display: block; font-size: .75rem; color: #64748b; margin-top: .4rem; }
+.credit, .debit { font-size: .85rem; font-weight: 800; text-align: right; overflow-wrap: anywhere; max-width: 55%; }
+.credit { color: #15803d; }
+.debit { color: #b91c1c; }
+.navigation { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.navigation a { padding: .65rem 0; color: #1b75bc; font-size: .85rem; }
+@media (max-width: 520px) { .panel { padding: 1.1rem; } .balance strong { font-size: clamp(1.2rem, 6vw, 2rem); } .activity li { flex-wrap: wrap; } }
