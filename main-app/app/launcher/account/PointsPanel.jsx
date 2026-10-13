@@ -7,7 +7,7 @@ const date = (value) => new Intl.DateTimeFormat('en-GB', {
   dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC',
 }).format(new Date(value));
 
-export function PointsPanelView({ account, history, unavailable = false, invalidCursor = false, olderPage = false }) {
+export function PointsPanelView({ account, history, unavailable = false, invalidCursor = false, olderPage = false, purchaseEnabled = false }) {
   return (
     <section className={styles.panel} aria-labelledby="points-heading">
       <div className={styles.heading}>
@@ -26,7 +26,8 @@ export function PointsPanelView({ account, history, unavailable = false, invalid
             <div><dt>Total debited</dt><dd>{format(account.lifetimeSpent)}</dd></div>
           </dl>
           <p className={styles.note}>Totals include refunds and account adjustments.</p>
-          <button className={styles.button} type="button" disabled>Add points — coming soon</button>
+          {purchaseEnabled ? <Link className={styles.button} href="/launcher/points">Buy points on itch.io</Link>
+            : <button className={styles.button} type="button" disabled>Add points — coming soon</button>}
           <div className={styles.activityHeading}><h3>{olderPage ? 'Earlier activity' : 'Recent activity'}</h3><span>Dates shown in UTC</span></div>
           {history.items.length === 0 ? <p className={styles.note}>No points activity yet.</p> : (
             <ul className={styles.activity}>
@@ -51,7 +52,7 @@ export function PointsPanelView({ account, history, unavailable = false, invalid
   );
 }
 
-export default async function PointsPanel({ supabase, userId, cursor = null }) {
+export default async function PointsPanel({ supabase, userId, cursor = null, purchaseEnabled = false }) {
   if (cursor !== null) {
     try { pointInteger(cursor, { nonzero: true }); }
     catch { return <PointsPanelView invalidCursor />; }
@@ -65,5 +66,5 @@ export default async function PointsPanel({ supabase, userId, cursor = null }) {
   } catch {
     return <PointsPanelView unavailable />;
   }
-  return <PointsPanelView account={account} history={history} olderPage={cursor !== null} />;
+  return <PointsPanelView account={account} history={history} olderPage={cursor !== null} purchaseEnabled={purchaseEnabled} />;
 }

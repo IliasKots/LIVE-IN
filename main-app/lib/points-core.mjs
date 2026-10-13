@@ -84,7 +84,7 @@ export async function listPointTransactions(client, id, { limit = 20, cursor = n
     if (!data || !Array.isArray(data.items) || data.items.length > limit) throw new Error();
     if (data.nextCursor !== null) pointInteger(data.nextCursor, { nonzero: true });
     return { items: data.items.map((item) => {
-      if (!UUID.test(item.id) || !['award', 'spend', 'refund', 'admin_adjustment'].includes(item.type)
+      if (!UUID.test(item.id) || !['award', 'spend', 'refund', 'admin_adjustment', 'revocation'].includes(item.type)
         || typeof item.description !== 'string' || item.description.length > 200
         || typeof item.createdAt !== 'string' || !Number.isFinite(Date.parse(item.createdAt))) throw new Error();
       return { id: item.id, amount: pointInteger(item.amount, { signed: true, nonzero: true }),

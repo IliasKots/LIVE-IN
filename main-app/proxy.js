@@ -2,6 +2,13 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
 
 export async function proxy(request) {
+  // Redeem proofs must be consumed by the route before auth or page rendering.
+  if (request.nextUrl.pathname === '/api/points/itch/redeem') {
+    return NextResponse.next({ headers: { 'Cache-Control': 'private, no-store', 'Referrer-Policy': 'no-referrer' } });
+  }
+  // Provider webhooks carry no browser session; the route verifies the raw-body signature.
+  if (request.nextUrl.pathname === '/api/points/lemonsqueezy/webhook'
+    || request.nextUrl.pathname === '/api/points/stripe/webhook') return NextResponse.next();
   let response = NextResponse.next({
     request,
   });

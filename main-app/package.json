@@ -9,9 +9,13 @@
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "eslint .",
-    "lint:points": "eslint lib/points*.{js,mjs} lib/launcher-auth*.{js,mjs} app/api/v1/me/points app/launcher/account/PointsPanel.jsx app/launcher/account/page.jsx tests scripts/points-admin.mjs scripts/smoke-points.mjs",
+    "lint:points": "eslint lib/points*.{js,mjs} lib/launcher-auth*.{js,mjs} app/api/v1/me/points app/api/points app/launcher/points app/launcher/account/PointsPanel.jsx app/launcher/account/page.jsx tests scripts/points-admin.mjs scripts/smoke-points.mjs scripts/smoke-points-preview.mjs scripts/preview-points.mjs scripts/build-points-local.mjs scripts/verify-lemonsqueezy-config.mjs app/api/points/lemonsqueezy app/api/dev app/launcher/points/complete app/launcher/points/mock-checkout scripts/smoke-lemonsqueezy-local.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:smoke": "node scripts/smoke-points.mjs"
+    "test:smoke": "node scripts/smoke-points.mjs",
+    "build:points-local": "node scripts/build-points-local.mjs",
+    "preview:points": "node scripts/preview-points.mjs",
+    "test:points-preview": "node scripts/smoke-points-preview.mjs",
+    "test:lemonsqueezy-smoke": "node scripts/smoke-lemonsqueezy-local.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

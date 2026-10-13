@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import styles from "./account.module.css";
 import PointsPanel from './PointsPanel';
 import { pointsEnabled } from '@/lib/points';
+import { getPublicItchPacks } from '@/lib/points-itch';
 
 export default async function AccountPage({ searchParams }) {
   const supabase = await createClient();
@@ -89,7 +90,7 @@ export default async function AccountPage({ searchParams }) {
           </div>
         </section>
 
-        {pointsEnabled() && <PointsPanel supabase={supabase} userId={user.id} cursor={query?.pointsCursor ?? null} />}
+        {pointsEnabled() && <PointsPanel supabase={supabase} userId={user.id} cursor={query?.pointsCursor ?? null} purchaseEnabled={getPublicItchPacks().length > 0} />}
 
         <div className={styles.grid}>
           <section className={styles.card}>

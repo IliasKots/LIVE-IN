@@ -1,0 +1,41 @@
+PLAYLIVE POINTS — PURCHASE AND DELIVERY GUIDE
+
+Use this guide only after PlayLive announces that points checkout is available.
+If checkout is unavailable, do not pay a standalone itch.io page expecting an
+automatic points credit.
+
+1. Sign in to your verified PlayLive account in the launcher.
+2. Click the points +, choose a pack, then choose Buy.
+3. Sign in to the SAME PlayLive account if the website asks you to do so.
+4. Complete the selected points sub-product checkout on itch.io.
+5. After payment, click itch.io's claim action for that purchase.
+6. PlayLive verifies the purchase and credits the account that started checkout.
+   Wait for the PlayLive confirmation.
+7. Return to the launcher and check your balance and history. Use Check again
+   if confirmation is delayed.
+
+USD minimums and total credits (bonuses already included):
+Starter   $5     5,000 points
+Regular  $10    10,000 points
+Pro      $25    27,500 points, including 10% bonus
+Max      $50    57,500 points, including 15% bonus
+Ultimate $100  120,000 points, including 20% bonus
+
+Extra payment above the selected pack's minimum still delivers that pack once.
+Paying again is a separate purchase; retrying a claim is not.
+
+This file contains no redemption code. Downloading it or the launcher, owning
+the itch.io project, closing checkout or returning to PlayLive does not credit
+points. Buy the selected points sub-product through the account-linked PlayLive
+flow and claim its verified purchase.
+
+If payment was cancelled, no points are added. If login expired, sign in to
+the original PlayLive account and continue the saved claim in that browser.
+Once PlayLive has received and saved the verified claim, Check again can finish
+delivery after restart. If you never clicked itch.io's claim action, return to
+your purchase and use it. Do not pay again just because delivery is delayed.
+
+If a claim expires or remains unavailable, contact PlayLive through the official
+support channel listed on its website with your purchase reference. Do not share
+passwords, session tokens or raw signed claim links. Direct itch.io purchases
+without PlayLive account binding require support verification.

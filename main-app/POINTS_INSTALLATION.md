@@ -1,6 +1,12 @@
 # PlayLive account points — staging installation
 
-The site remains deployed from `staging`. Implementation is on
+For current itch.io delivery and the additive verified-evidence migration, follow
+[POINTS_ITCH_SETUP.md](POINTS_ITCH_SETUP.md). Keep real checkout disabled pending
+provider and staging acceptance; this file's ledger prerequisites still apply.
+
+The previous handoff identifies `staging` as the deployment branch. Hosting
+settings and the hosted commit were not accessible during the 10 October check.
+Confirm that mapping before promotion. Local implementation is on
 `feature/points-system`, based on staging commit
 `df3dc579afcf0aec7b607f297ed2ccc016e56c1e`. Merge the reviewed implementation into
 `staging`; do not change the hosting provider's deployment-branch setting.
@@ -14,7 +20,8 @@ The site remains deployed from `staging`. Implementation is on
 - Award, spend, operator adjustments and full transaction reversals.
 - Existing Unity balance contract plus separate summary/history endpoints.
 - Account-page balance, gross credit/debit totals, UTC history, pagination,
-  refresh, unavailable and invalid-link states. Add Points stays disabled.
+  refresh, unavailable and invalid-link states. Purchases are disabled by default;
+  see `POINTS_ITCH_SETUP.md` for the configurable itch.io checkout and claim flow.
 - Independent read/write kill switches and disabled-by-default reward rules.
 - Operator CLI and tests that run without staging credentials.
 
@@ -48,6 +55,10 @@ or migrated during local implementation.
 3. Apply `supabase/migrations/202609190001_points_ledger.sql` using the staging
    SQL editor or your existing Supabase migration pipeline. It is an atomic,
    additive migration. Do not run Prisma `db push` or `migrate reset`.
+   For purchases, then inspect `supabase/points-purchases-preflight.sql` and apply
+   `supabase/migrations/202610100002_points_purchase_intents.sql`. Skip a migration
+   already applied by the migration pipeline; reconcile any conflicting schema.
+   The purchase migration adds intents/receipts and functions to the same wallet.
 4. Configure the existing Supabase URL, publishable key and server secret key.
    The secret key must never have a `NEXT_PUBLIC_` prefix.
 5. Deploy the reviewed commit to `staging` with `POINTS_ENABLED=false` and
@@ -55,13 +66,16 @@ or migrated during local implementation.
 6. Set `POINTS_ENABLED=true` in staging and redeploy. Test a real account:
    anonymous launcher request -> 401; authenticated missing wallet ->
    `{"balance":"0"}`; account page -> zero and empty history.
-7. Set `POINTS_MUTATIONS_ENABLED=true` only in the trusted environment used for
+7. Set `POINTS_DEPLOYMENT_ENVIRONMENT=staging` and
+   `POINTS_MUTATIONS_ENABLED=true` only in the trusted environment used for
    grants. Use the CLI below to grant 10,000, retry the same request, debit 100,
    and verify 9,900 in both website and launcher. Verify a second user cannot
    read the first user's account or history.
 8. In Unity, enable the existing **Enable Staging Wallet Api** setting only
-   after the staging API is verified. The current Unity workspace has this
-   disabled because the old route returned 404. Production stays independent.
+   after the staging API is verified. The copied workspace's scene currently has
+   staging reads enabled and production reads disabled. Authenticated staging
+   wallet/schema readiness is still unverified. Checkout has separate switches
+   and remains disabled until the website purchase pilot passes.
 9. Verify token refresh once after 401, logout clearing, and a simulated server
    failure retaining a labeled last-known balance in Unity.
 
@@ -72,10 +86,19 @@ No secret values are supplied with this implementation.
 ```dotenv
 POINTS_ENABLED=false
 POINTS_MUTATIONS_ENABLED=false
+POINTS_DEPLOYMENT_ENVIRONMENT=staging
+POINTS_PRODUCTION_ACCEPTED=false
 POINTS_REWARD_RULES_JSON={}
 # Trusted CLI only; existing auth.users UUID, not customer-controlled metadata:
 POINTS_OPERATOR_USER_ID=
 ```
+
+Mutations require an explicit `local`, `staging`, or `production` environment.
+Production also requires `POINTS_PRODUCTION_ACCEPTED=true`. An unset/unknown
+environment fails closed, even if the other write switches are true.
+Read-only wallet requests do not require mutation acceptance. See
+`.env.points.example` and `.env.points.production.example` for independent,
+disabled-by-default purchase configuration. No environment was enabled remotely.
 
 The JSON rule shape is `{ "rule_id": { "enabled": true, "amount": "100",
 "description": "Welcome reward" } }`. Rates and earning events must be decided

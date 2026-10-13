@@ -21,7 +21,7 @@ if (url.origin !== window.location.origin) {
 }
 
 // The launcher authorization flow must return to this route.
-if (url.pathname !== "/launcher/authorize") {
+if (!["/launcher/authorize", "/launcher/points", "/launcher/points/claim"].includes(url.pathname)) {
   return "/launcher/account";
 }
 

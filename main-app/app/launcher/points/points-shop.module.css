@@ -1,0 +1,24 @@
+.page { min-height: 80dvh; padding: clamp(2rem, 6vw, 5rem) 1rem; background: linear-gradient(180deg, #f9fbfd, #edfaf8); color: #1f2937; }
+.shop { width: min(100%, 960px); margin: 0 auto; padding: clamp(1.2rem, 4vw, 2.5rem); border-radius: 20px; background: #fff; border: 1px solid #dce8f1; box-shadow: 0 14px 40px #0f172a0f; box-sizing: border-box; }
+.eyebrow { color: #1b75bc; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+.shop h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; margin: .7rem 0 1rem; }
+.shop p { line-height: 1.7; color: #526176; }
+.packs { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.8rem 0; }
+.pack { display: flex; flex-direction: column; padding: 1.5rem; border: 1px solid #dce8f1; border-radius: 16px; background: #f9fbfd; min-width: 0; }
+.artwork { display: block; width: 100%; height: auto; border-radius: 12px; margin-bottom: 1.25rem; }
+.pack h2 { margin: 0 0 1rem; font-size: 1.1rem; }
+.amount { font-size: clamp(1.6rem, 5vw, 2.5rem); color: #1b75bc; overflow-wrap: anywhere; }
+.pack span, .pack small { font-size: .8rem; color: #64748b; }
+.pack p { margin-bottom: 1.5rem; }
+.pack small { text-align: center; margin-top: .75rem; }
+.primary, .secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .75rem 1rem; border-radius: 9px; border: 1px solid #1b75bc; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; box-sizing: border-box; }
+.primary { background: #1b75bc; color: #fff; }
+.primary:hover { background: #155c94; }
+.primary:disabled { background: #e2e8f0; border-color: #cbd5e1; color: #64748b; cursor: not-allowed; }
+.secondary { background: #fff; color: #1b75bc; }
+.primary:focus-visible, .secondary:focus-visible, .actions a:focus-visible { outline: 3px solid #1b75bc; outline-offset: 3px; }
+.notice { padding: 1rem; background: #f1f6fc; border: 1px solid #dce8f1; border-radius: 10px; line-height: 1.6; }
+.balance strong { color: #1f2937; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.actions a { color: #1b75bc; }
+.actions a.primary { color: #fff; }

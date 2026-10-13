@@ -1,10 +1,11 @@
 import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import * as core from './points-core.mjs';
+import { pointsMutationsAllowed } from './points-policy.mjs';
 
 export const pointsEnabled = () => process.env.POINTS_ENABLED === 'true';
 function mutationClient() {
-  if (!pointsEnabled() || process.env.POINTS_MUTATIONS_ENABLED !== 'true') {
+  if (!pointsMutationsAllowed()) {
     throw new core.PointsError('POINT_MUTATIONS_DISABLED', 503);
   }
   return createAdminClient();
