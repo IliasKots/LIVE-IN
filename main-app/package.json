@@ -18,6 +18,8 @@
     "test:lemonsqueezy-smoke": "node scripts/smoke-lemonsqueezy-local.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.896.0",
+    "@aws-sdk/s3-request-presigner": "3.896.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",

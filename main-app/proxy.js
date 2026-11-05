@@ -9,6 +9,8 @@ export async function proxy(request) {
   // Provider webhooks carry no browser session; the route verifies the raw-body signature.
   if (request.nextUrl.pathname === '/api/points/lemonsqueezy/webhook'
     || request.nextUrl.pathname === '/api/points/stripe/webhook') return NextResponse.next();
+  // Launcher game downloads authenticate with a bearer token only; no browser session is involved.
+  if (request.nextUrl.pathname.startsWith('/api/v1/games/')) return NextResponse.next();
   let response = NextResponse.next({
     request,
   });
